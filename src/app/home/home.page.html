@@ -1,20 +1,27 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      App News
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-card *ngFor='let myNews of dataNews'>
+    <img 
+      [src]='myNews.img'
+    />
+    <ion-card-header>
+      <ion-card-subtitle>{{myNews.date}}</ion-card-subtitle>
+      <ion-card-title>{{myNews.title}}</ion-card-title>   
+    </ion-card-header>
+      
+    <ion-card-content>
+      {{myNews.desc}}
+    </ion-card-content>
+    <div [ngClass] = "myNews.isFav ? 'fav fav--active' : 'fav' ">
+      <ion-icon name="heart"></ion-icon>
+    </div>
+    
+  </ion-card>
 </ion-content>
